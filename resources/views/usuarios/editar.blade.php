@@ -17,18 +17,18 @@
     </ul>
     @endif
 
-    <form action="/Usuarios/gravar/{{ $usuario->id }}" method="post" class="p-5">
+    <form action="/usuarios/gravar/{{ $usuario->id }}" method="post" class="p-5">
         @csrf
         <div class="form-group">
-            <label for="Nome">Descrição</label>
+            <label for="Nome">Nome</label>
             <input type="text" class="form-control" name="Nome" value="{{ $usuario->Nome }}">
         </div>
         <div class="form-group">
-            <label for="Email">Preço</label>
-            <input type="number" class="form-control" name="E-mail" value="{{ $produto->Email }}">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" name="Email" value="{{ $usuario->Email }}">
         </div>
         <div class="form-group">
-        <label for="Idade">Idade</label>
+              <label for="Idade">Idade</label>
             <input type="number" class="form-control" name="Idade" value="{{ $usuario->Idade }}">
         </div>
         <div class="form-group">

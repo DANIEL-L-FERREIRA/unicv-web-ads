@@ -20,15 +20,15 @@
     <form action="/usuarios/salvar" method="post" class="p-5">
         @csrf
         <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" class="form-control" name="nome" value="{{ old('descricao') }}">
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" name="Nome" value="{{ old('Nome') }}">
         </div>
         <div class="form-group">
             <label for="Email">Email</label>
             <input type="email" class="form-control" name="Email" value="{{ old('Email') }}">
         </div>
         <div class="form-group">
-        <label for="Idade">Idade</label>
+            <label for="Idade">Idade</label>
             <input type="number" class="form-control" name="Idade" value="{{ old('Idade') }}">
         </div>
         <div class="form-group">

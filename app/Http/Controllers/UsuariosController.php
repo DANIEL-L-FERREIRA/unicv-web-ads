@@ -1,21 +1,19 @@
-
-
+<?php
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends Controller
 {
-        public function index() {
+    public function index() {
         $usuarios = DB::table('usuarios')->get();
 
         return view('usuarios.listar', ['usuarios' => $usuarios]);
     }
-
     public function show($id) {
         $usuario = DB::table('usuarios')->where('id', $id)->first();
+
         return view('usuarios.detalhes', ['usuario' => $usuario]);
     }
 
@@ -30,6 +28,7 @@ class UsuariosController extends Controller
             'Idade' => 'required|integer|min:0|not_in:0',
             'Telefone' => 'required|numeric|min:0'
         ], [], ['Nome' => 'Nome', 'Email' => 'Email', 'Idade' => 'Idade', 'Telefone' => 'Telefone']);
+
         if($validated->fails()) {
             return redirect('usuarios/novo')->withErrors($validated)->withInput();
         } else {
@@ -39,11 +38,13 @@ class UsuariosController extends Controller
                 'Idade' => $request->Idade,
                 'Telefone' => $request->Telefone,
             ]);
+
             return redirect('usuarios')->with('mensagem', 'Usuario cadastrado.');
         }
     }
     public function edit($id)
     {
+        //
         if (! DB::table('usuarios')->where('id', $id)->first()) {
             return redirect('usuarios')->with('mensagem', 'Usuario não encontrado.');
         }
@@ -51,8 +52,10 @@ class UsuariosController extends Controller
         $usuario = DB::table('usuarios')->where('id', $id)->first();
         return view('usuarios.editar', ['usuario' => $usuario]);
     }
+
     public function update(Request $request, $id)
     {
+        //
         if (! DB::table('usuarios')->where('id', $id)->first()) {
             return redirect('usuarios')->with('mensagem', 'Usuario não encontrado.');
         }
@@ -80,7 +83,6 @@ class UsuariosController extends Controller
     }
     public function destroy($id)
     {
-        //
         if (! DB::table('usuarios')->where('id', $id)->first()) {
             return redirect('usuarios')->with('mensagem', 'Usuario não encontrado.');
         }

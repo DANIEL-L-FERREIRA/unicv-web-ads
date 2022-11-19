@@ -13,7 +13,7 @@
     <div class="alert alert-success" role="alert">{{ session('mensagem') }}</div>
     @endif
 
-    <p><a href="/Usuarios/novo" class="btn btn-dark">Novo Usuario</a></p>
+    <p><a href="/usuarios/novo" class="btn btn-dark">Novo Usuario</a></p>
     <table class="table">
         <thead>
             <tr>

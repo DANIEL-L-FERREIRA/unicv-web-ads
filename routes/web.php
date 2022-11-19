@@ -16,7 +16,6 @@ Route::get('usuarios/{id}', [UsuariosController::class, 'show']);
 
 Route::get('home', [HomeController::class, 'index']);
 Route::get('users', [HomeController::class, 'users']);
-
 Route::get('/', function () {
     return view('welcome');
 });

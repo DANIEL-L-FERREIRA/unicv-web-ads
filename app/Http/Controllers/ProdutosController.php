@@ -1,25 +1,18 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-
 class ProdutosController extends Controller
 {
     public function index() {
         $dados = DB::table('produtos')->get();
-
         return view('produtos.listar', ['produtos' => $dados]);
     }
-
     public function show($id) {
         $produto = DB::table('produtos')->where('id', $id)->first();
-
         return view('produtos.detalhes', ['produto' => $produto]);
     }
-
     public function create() {
         return view('produtos.novo');
     }
@@ -45,7 +38,6 @@ class ProdutosController extends Controller
             return redirect('produtos')->with('mensagem', 'Produto cadastrado.');
         }
     }
-
     public function edit($id)
     {
         if (! DB::table('produtos')->where('id', $id)->first()) {
@@ -55,7 +47,6 @@ class ProdutosController extends Controller
         $produto = DB::table('produtos')->where('id', $id)->first();
         return view('produtos.editar', ['produto' => $produto]);
     }
-
     public function update(Request $request, $id)
     {
         if (! DB::table('produtos')->where('id', $id)->first()) {
@@ -67,7 +58,7 @@ class ProdutosController extends Controller
             'Email'      => 'required|email',
             'Idade' => 'required|numeric|integer',
             'Telefone' => 'required|numeric'
-        ] []{});
+        ]);
 
         if($validated->fails()) {
             return redirect('produtos/editar/'.$id)->withErrors($validated);
@@ -83,13 +74,11 @@ class ProdutosController extends Controller
             return redirect('produtos')->with('mensagem', 'Produto alterado.');
         }
     }
-
     public function destroy($id)
     {
         if (! DB::table('produtos')->where('id', $id)->first()) {
             return redirect('produtos')->with('mensagem', 'Produto não encontrado.');
         }
-
         DB::table('produtos')->where('id', $id)->delete();
         return redirect('produtos')->with('mensagem', 'Produto excluído.');
     }
