@@ -8,12 +8,12 @@
     <script src="/bootstrap.js"></script>
   </head>
   <body>
-    <h1>Listagem de Usuarios</h1>
+    <center> <h1> <b> LISTA DE USUÁRIOS </b> </h1> </center>
     @if (session('mensagem'))
     <div class="alert alert-success" role="alert">{{ session('mensagem') }}</div>
     @endif
 
-    <p><a href="/usuarios/novo" class="btn btn-dark">Novo Usuario</a></p>
+    <p><a href="/usuarios/novo" class="btn btn-success">Novo Usuario</a></p>
     <table class="table">
         <thead>
             <tr>
@@ -33,7 +33,7 @@
                 <td>{{ $usuario->Idade }}</td>
                 <td>{{ $usuario->Telefone }}</td>
                 <td>
-                  <a href="/usuarios/{{ $usuario->id }}" class="btn btn-info">Visualizar</a>
+                  <a href="/usuarios/{{ $usuario->id }}" class="btn btn-primary">Visualizar</a>
                   <a href="/usuarios/editar/{{ $usuario->id }}" class="btn btn-warning">Editar</a>
                   <a href="/usuarios/excluir/{{ $usuario->id }}" class="btn btn-danger">Excluir</a>
                 </td>
